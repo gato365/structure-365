@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,14 @@
   "bugs": {
     "url": "https://github.com/gato365/structure-365/issues"
   },
-  "homepage": "https://github.com/gato365/structure-365#readme"
+  "homepage": "https://github.com/gato365/structure-365#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "connect-session-sequelize": "^7.1.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "nodemon": "^2.0.20"
+  }
 }
