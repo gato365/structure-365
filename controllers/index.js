@@ -8,3 +8,5 @@ const allRouter = new Router();
 allRouter.use("/", pathRouter);
 
 module.exports = allRouter;
+
+// CRUD
