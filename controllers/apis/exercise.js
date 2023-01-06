@@ -11,13 +11,12 @@ const { Exercise } = require('../../models');
 
 
   exerciseRouter.post('/', auth, async (req, res) => {
-    const { name, description, goal, fundBy } = req.body;
+    const { exerciseName, date, powerInfo } = req.body;
 
-    const project = await Project.create({
-        name,
-        description,
-        goal,
-        fundBy,
+    const newExercise = await Exercise.create({
+        exerciseName,
+        date,
+        powerInfo,
         creatorId: req.user.id,
     });
 

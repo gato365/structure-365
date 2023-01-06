@@ -15,7 +15,7 @@ class Exercise extends Model {
 
   Exercise.init(
     {
-        exercise: {
+        exerciseName: {
             type: DataTypes.STRING,
             allowNull: false,
         },
