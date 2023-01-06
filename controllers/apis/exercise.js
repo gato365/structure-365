@@ -35,6 +35,16 @@ exerciseRouter.post('/', async (req, res) => {
 
 
 // 3) Get 1 exercise
+exerciseRouter.get('/:id', async (req, res) => {
+
+  try {
+    const exerciseData = await Exercise.findByPk(req.params.id, {
+      include: [{ model: User, as: 'user_id' }]
+    });
+  }
+
+
+});
 
 // 4) Delete 1 exerise
 
