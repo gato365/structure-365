@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+// const { readFromFile, readAndAppend } = require('../../helpers');
 const jwt = require("jsonwebtoken");
 
 const { Exercise } = require('../../models');
@@ -33,9 +33,14 @@ exerciseRouter.post('/', async (req, res) => {
 
 
 // 2) GET Route for retrieving all the exercises
-exerciseRouter.get('/', (req, res) => {
-  console.info(`${req.method} request received for tips`);
-  readFromFile('./db/tips.json').then((data) => res.json(JSON.parse(data)));
+exerciseRouter.get('/', async (req, res) => {
+  try {
+    const exerciseData = await Exercise.findAll();
+    res.status(200).json(exerciseData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+  
 });
 
 
@@ -45,21 +50,21 @@ exerciseRouter.get('/', (req, res) => {
 // 3) Get 1 exercise
 exerciseRouter.get('/:id', async (req, res) => {
 
-console.info(`${req.method} request received for it work`);
-  
+  console.info(`${req.method} request received for it work`);
+
   try {
     const exerciseData = await Exercise.findByPk(req.params.id, {
       // Need to do a task, I am pretty SUre
     });
 
 
-    if (!exerciseData ) {
+    if (!exerciseData) {
       res.status(404).json({ message: 'No exercise found with this id!' });
       return;
     }
 
     res.status(200).json(exerciseData);
-  
+
   } catch (err) {
 
     console.log(req.params.id);
@@ -67,7 +72,7 @@ console.info(`${req.method} request received for it work`);
     res.status(500).json(err);
   }
 
-  });
+});
 
 // 4) Delete 1 exerise
 
