@@ -37,14 +37,29 @@ exerciseRouter.post('/', async (req, res) => {
 // 3) Get 1 exercise
 exerciseRouter.get('/:id', async (req, res) => {
 
+console.info(`${req.method} request received for it work`);
+  
   try {
     const exerciseData = await Exercise.findByPk(req.params.id, {
-      include: [{ model: User, as: 'user_id' }]
+      // Need to do a task
     });
+
+
+    if (!exerciseData ) {
+      res.status(404).json({ message: 'No exercise found with this id!' });
+      return;
+    }
+
+    res.status(200).json(exerciseData);
+  
+  } catch (err) {
+
+    console.log(req.params.id);
+
+    res.status(500).json(err);
   }
 
-
-});
+  });
 
 // 4) Delete 1 exerise
 
