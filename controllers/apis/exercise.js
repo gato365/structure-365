@@ -16,12 +16,14 @@ const { Exercise } = require('../../models');
     const newExercise = await Exercise.create({
         exerciseName,
         date,
-        powerInfo,
-        creatorId: req.user.id,
+        powerInfo: JSON.stringify(powerInfo),
+        userId: req.user.id,
     });
 
+
+
     res.json({
-        id: project.id,
+        id: newExercise.id,
     });
 });
 

@@ -37,3 +37,5 @@ class Exercise extends Model {
         modelName: 'exercise'
     }
 );
+
+module.exports = Exercise;
