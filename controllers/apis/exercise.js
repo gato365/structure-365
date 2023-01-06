@@ -8,16 +8,16 @@ const { Exercise } = require('../../models');
   // 1.a) user token should have eveerything
   // 
 
+const exerciseRouter = new Router();
 
-
-  exerciseRouter.post('/', auth, async (req, res) => {
+  exerciseRouter.post('/',  async (req, res) => {
     const { exerciseName, date, powerInfo } = req.body;
 
     const newExercise = await Exercise.create({
         exerciseName,
         date,
         powerInfo: JSON.stringify(powerInfo),
-        userId: req.user.id,
+        // userId: req.user.id,
     });
 
 

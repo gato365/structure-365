@@ -13,6 +13,9 @@ const app = express();
 // Either on Heroku's port or my local port 
 const PORT = process.env.PORT || 3001;
 
+// Middleware 
+app.use(express.json()); 
+
 
 // Use the main router
 app.engine("handlebars", engine());
