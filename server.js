@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const { engine } = require("express-handlebars");
+const cookieParser = require('cookie-parser');
 
 // Access connection to sequelize
 const sequelize = require('./config/connection')
