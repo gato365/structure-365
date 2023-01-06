@@ -5,26 +5,28 @@ const { Exercise } = require('../../models');
 
 // Insomnia
 // 1) Post a exercise 
-  // 1.a) user token should have eveerything
-  // 
+// 1.a) user token should have eveerything
+// 
 
 const exerciseRouter = new Router();
 
-  exerciseRouter.post('/',  async (req, res) => {
-    const { exerciseName, date, powerInfo } = req.body;
+exerciseRouter.post('/', async (req, res) => {
+  const { exerciseName, date, powerInfo } = req.body;
 
-    const newExercise = await Exercise.create({
-        exerciseName,
-        date,
-        powerInfo: JSON.stringify(powerInfo),
-        // userId: req.user.id,
-    });
+  const newExercise = await Exercise.create({
+    exerciseName,
+    date,
+    powerInfo: JSON.stringify(powerInfo),
+    // userId: req.user.id,
+  });
 
+  console.log(newExercise);
 
-
-    res.json({
-        id: newExercise.id,
-    });
+  res.json({
+    id: newExercise.id,
+    date: newExercise.date,
+    powerInfo: newExercise.powerInfo
+  });
 });
 
 
