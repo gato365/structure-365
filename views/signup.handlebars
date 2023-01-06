@@ -1,0 +1,86 @@
+<section class="hero has-background-grey-dark is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+          <button class="delete is-medium"></button>
+          <form class="box has-background-grey-lighter">
+            <div class="field">
+              <div id="signup_errors" class="has-text-danger"></div>
+              <div class="field">
+                <label class="label">Username</label>
+                <div class="control">
+                  <input id="username_signup" type="email" placeholder="Enter Username" class="input" required>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                  <input id="email_signup" type="email" placeholder="Enter Email" class="input" required>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                  <input id="password_signup" type="password" placeholder="Enter Password" class="input" required>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Confirm Password</label>
+                <div class="control">
+                  <input id="password_signup_check" type="password" placeholder="Enter Password" class="input" required>
+                </div>
+              </div>
+              <div class="field level">
+                <button id="signup_button" class="button is-normal is-responsive is-primary level-right">
+                  Create Account
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+   document.querySelector('#signup_button').addEventListener('click', (event) => {
+    console.log('haha');
+    event.preventDefault();
+    let username = document.querySelector('#username_signup').value;
+    let email = document.querySelector('#email_signup').value;
+    let password = document.querySelector('#password_signup').value;
+    let passwordCheck = document.querySelector('#password_signup_check').value;
+    
+    if (password != passwordCheck) {
+      console.log('passwords are different');
+      return;
+      
+    } else {
+      console.log('passwords are the same');
+    }
+
+    console.log(username, email, password, passwordCheck);
+    document.querySelector('#signup_errors').textContent = '';
+    fetch('/api/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+    }).then((result) => {
+      if (!result.ok) {
+        document.querySelector('#signup_errors').textContent = 'Invalid Username, Email, or Password';
+        return null;
+      } else {
+        return result.json();
+      }
+    })
+   });
+
+</script>
