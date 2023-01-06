@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const { engine } = require("express-handlebars");
+const cookieParser = require('cookie-parser');
 
 // Access connection to sequelize
 const sequelize = require('./config/connection')
@@ -12,6 +13,10 @@ const app = express();
 
 // Either on Heroku's port or my local port 
 const PORT = process.env.PORT || 3001;
+
+// Middleware 
+app.use(express.json()); 
+app.use(cookieParser());
 
 
 // Use the main router

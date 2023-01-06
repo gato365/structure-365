@@ -13,4 +13,6 @@ Exercise.belongsTo(User, {
 });
 
 
+
+
 module.exports = { User, Exercise };
