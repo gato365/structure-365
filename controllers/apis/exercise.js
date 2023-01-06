@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
 const jwt = require("jsonwebtoken");
 
 const { Exercise } = require('../../models');
@@ -31,7 +32,14 @@ exerciseRouter.post('/', async (req, res) => {
 
 
 
-// 2) Get a bunch of exercises for user (this is for user )
+// 2) GET Route for retrieving all the exercises
+exerciseRouter.get('/', (req, res) => {
+  console.info(`${req.method} request received for tips`);
+  readFromFile('./db/tips.json').then((data) => res.json(JSON.parse(data)));
+});
+
+
+
 
 
 // 3) Get 1 exercise
@@ -41,7 +49,7 @@ console.info(`${req.method} request received for it work`);
   
   try {
     const exerciseData = await Exercise.findByPk(req.params.id, {
-      // Need to do a task
+      // Need to do a task, I am pretty SUre
     });
 
 
