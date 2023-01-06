@@ -1,0 +1,73 @@
+<section class="hero has-background-grey-dark is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+          <button class="delete is-medium"></button>
+          <form class="box has-background-grey-lighter">
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control has-icons-left">
+                <input id="email_input" type="email" placeholder="Enter Email" class="input has-background-white-ter" required>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+              </div>
+              <div id="errors" class="has-text-danger"></div>
+            </div>
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control has-icons-left">
+                <input id="password_input" type="password" placeholder="Enter Password" class="input has-background-white-ter" required>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="" class="checkbox">
+                <input type="checkbox">
+                Remember me
+              </label>
+            </div>
+            <div class="field level">
+              <p id="signup_button" class="is-size-7 has-text-link ml-2" href="">Sign Up</p>
+              <button id="login_button" class="button is-normal is-responsive is-primary level-right">
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+   document.querySelector('#login_button').addEventListener('click', (event) => {
+    event.preventDefault();
+    let email = document.querySelector('#email_input').value;
+    let password = document.querySelector('#password_input').value;
+    
+    console.log( email, password);
+    document.querySelector('#errors').textContent = '';
+    fetch('/api/user/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    }).then((result) => {
+      if (!result.ok) {
+        document.querySelector('#errors').textContent = 'Incorrect Email or Password.';
+        return null;
+      } else {
+        return result.json();
+      }
+    })
+   });
+
+</script>
