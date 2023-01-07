@@ -61,7 +61,28 @@ exerciseRouter.get('/:id', async (req, res) => {
   try {
     const exerciseData = await Exercise.findByPk(req.params.id, {
       // Need to do a task, I am pretty SUre
+      // include:  ['powerInfo'],
     });
+
+
+
+
+
+    const powerData = await Exercise.findByPk(req.params.id,{
+      attributes: ['powerInfo'],
+    });
+
+
+
+
+    // Attempt 0: Just as it is (an JSON Object?)
+    // console.log(powerData);
+    // Attempt 1: Turns into a string
+    // console.log(JSON.stringify(powerData));
+    // Attempt 2: Get First element from JSON (Does not work-undefined)
+    // console.log(powerData[0]);
+     // Attempt 3: Parse object
+    // console.log(JSON.parse(powerData));
 
 
     if (!exerciseData) {
@@ -69,8 +90,12 @@ exerciseRouter.get('/:id', async (req, res) => {
       return;
     }
 
+
+    // Print to Screen
     res.status(200).json(exerciseData);
 
+
+    
   } catch (err) {
 
     console.log(req.params.id);
@@ -79,6 +104,12 @@ exerciseRouter.get('/:id', async (req, res) => {
   }
 
 });
+
+
+
+
+
+
 
 // 4) Delete 1 exerise
 

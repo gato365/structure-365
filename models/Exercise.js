@@ -26,7 +26,13 @@ class Exercise extends Model {
         powerInfo: {
             type: DataTypes.TEXT,
             allowNull: false,
-        }
+            get: function(){
+                return JSON.parse(this.getDataValue("powerInfo"));
+              },
+            set: function(value){
+                return this.setDataValue("powerInfo", value);
+              }
+        },
     },
     {
 
