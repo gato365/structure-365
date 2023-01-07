@@ -18,4 +18,5 @@ bin-release/
 # information for Eclipse / Flash Builder.
 node_modules/
 node_module
+node_modules
 .env
