@@ -12,7 +12,7 @@ const mainRouter = require("./controllers");
 const app = express();
 
 // Either on Heroku's port or my local port 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT ||3001;
 
 // Middleware 
 app.use(express.json()); 

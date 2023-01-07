@@ -11,6 +11,8 @@ const { Exercise } = require('../../models');
 
 const exerciseRouter = new Router();
 
+
+
 exerciseRouter.post('/', async (req, res) => {
   const { exerciseName, date, powerInfo } = req.body;
 
@@ -28,6 +30,10 @@ exerciseRouter.post('/', async (req, res) => {
     date: newExercise.date,
     powerInfo: newExercise.powerInfo
   });
+
+
+
+  
 });
 
 
@@ -80,30 +86,30 @@ exerciseRouter.get('/:id', async (req, res) => {
 
 // 5) Update 1 exercise
 // Updates book based on its book_id
-exerciseRouter.put('/:id', (req, res) => {
-  //Calls the update method on the Book model
-  Exercise.update(
-    {
-      // All the fields you can update and the data attached to the request body.
-      id: req.body.id,
-      date: req.body.date,
-      powerInfo: req.body.powerInfo
-    },
-    {
-      // Gets a exercise based on the id given in the request parameters
-      where: {
-        id: req.params.id,
-      },
-    }
-  )
-    .then((updatedExercise) => {
-      res.json(updatedExercise);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.json(err);
-    });
-});
+// exerciseRouter.put('/:id', (req, res) => {
+//   //Calls the update method on the Book model
+//   Exercise.update(
+//     {
+//       // All the fields you can update and the data attached to the request body.
+//       id: req.body.id,
+//       date: req.body.date,
+//       powerInfo: req.body.powerInfo
+//     },
+//     {
+//       // Gets a exercise based on the id given in the request parameters
+//       where: {
+//         id: req.params.id,
+//       },
+//     }
+//   )
+//     .then((updatedExercise) => {
+//       res.json(updatedExercise);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.json(err);
+//     });
+// });
 
 
 
