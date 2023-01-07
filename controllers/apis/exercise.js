@@ -61,7 +61,22 @@ exerciseRouter.get('/:id', async (req, res) => {
   try {
     const exerciseData = await Exercise.findByPk(req.params.id, {
       // Need to do a task, I am pretty SUre
+      // include:  ['powerInfo'],
     });
+
+
+
+
+
+    const powerData = await Exercise.findByPk(req.params.id,{
+      attributes: ['powerInfo'],
+    });
+
+
+
+
+
+    
 
 
     if (!exerciseData) {
@@ -71,6 +86,8 @@ exerciseRouter.get('/:id', async (req, res) => {
 
     res.status(200).json(exerciseData);
 
+
+    
   } catch (err) {
 
     console.log(req.params.id);
@@ -79,6 +96,12 @@ exerciseRouter.get('/:id', async (req, res) => {
   }
 
 });
+
+
+
+
+
+
 
 // 4) Delete 1 exerise
 
