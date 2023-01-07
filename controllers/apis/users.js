@@ -1,10 +1,13 @@
 const { Router } = require("express");
 const jwt = require("jsonwebtoken");
 
-const { User } = require('../../models/User');
+const { User } = require('../../models'); 
+//Issue with Ben's Code: const { User } = require('../../models/User');
 
 const usersRouter = new Router();
 
+
+// 1) POST to place a new user (by login)
 usersRouter.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
@@ -30,8 +33,28 @@ usersRouter.post("/login", async (req, res) => {
     res.end();
 });
 
+
+
+// 2) GET Route for retrieving all the exercises
+usersRouter.get('/', async (req, res) => {
+    try {
+      const exerciseData = await Exercise.findAll();
+      res.status(200).json(exerciseData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  
+  });
+
+
+// 3) POST to place a new user (in INSOMNIA)
 usersRouter.post('/', async (req, res) => {
+
+    
     const { username, email, password,  } = req.body;
+
+    console.error(username);
+
 
     //set user to the username being passed in
     let user = await User.findOne({ where: {username}});
