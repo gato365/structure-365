@@ -33,7 +33,7 @@ exerciseRouter.post('/', async (req, res) => {
 
 
 
-  
+
 });
 
 
@@ -68,32 +68,37 @@ exerciseRouter.get('/:id', async (req, res) => {
 
 
 
-    const powerData = await Exercise.findByPk(req.params.id,{
+    function addsum(arr) {
+      var sum = 0;
+      for (var z = 0; z < arr.length; z++) {
+        sum += arr[z];
+      }
+      return sum;
+    }
+
+    const powerData = await Exercise.findByPk(req.params.id, {
       attributes: ['powerInfo'],
     });
 
 
 
-    
 
 
 
-    // console.log(powerData.powerInfo[0].reps * powerData.powerInfo[0].weight) ;
+
 
 
     const numberSets = powerData.powerInfo.length;
-    const calculatedPower = 0;
-    
-// Calculate Power for all sets
-for (let i = 0; i <= numberSets; i++) {
-//     const setPower = powerData.powerInfo[i].reps * powerData.powerInfo[i].weight;
-//     console.log(setPower);
-//     calculatedPower = calculatedPower + setPower;
-console.log(i);
-}
+    const calculatedPower = [];
+
+    // Calculate Power for all sets
+    for (let i = 0; i < numberSets; i++) {
+      let setPower = powerData.powerInfo[i].reps * powerData.powerInfo[i].weight;
+      calculatedPower.push(setPower);
+    }
 
 
-// console.log(calculatedPower);
+    console.log(calculatedPower);
 
 
 
@@ -103,7 +108,7 @@ console.log(i);
     // console.log(JSON.stringify(powerData));
     // Attempt 2: Get First element from JSON (Does not work-undefined)
     // console.log(powerData[0]);
-     // Attempt 3: Parse object
+    // Attempt 3: Parse object
     // console.log(JSON.parse(powerData));
 
 
@@ -117,7 +122,7 @@ console.log(i);
     res.status(200).json(exerciseData);
 
 
-    
+
   } catch (err) {
 
     console.log(req.params.id);
