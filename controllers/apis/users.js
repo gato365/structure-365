@@ -38,8 +38,8 @@ usersRouter.post("/login", async (req, res) => {
 // 2) GET Route for retrieving all the exercises
 usersRouter.get('/', async (req, res) => {
     try {
-      const exerciseData = await Exercise.findAll();
-      res.status(200).json(exerciseData);
+      const userData = await Exercise.findAll();
+      res.status(200).json(userData);
     } catch (err) {
       res.status(500).json(err);
     }
