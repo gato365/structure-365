@@ -75,7 +75,7 @@ usersRouter.post('/', async (req, res) => {
         return;
     };
 
-    const newUserObject = await User.create({
+    const userData = await User.create({
         username,
         email,
         password,
@@ -83,8 +83,37 @@ usersRouter.post('/', async (req, res) => {
 
     //need to check functionality of this
     res.status(200).json({
-        id: newUserObject.id,
+        id: userData.id,
     });
 });
+
+
+// 4) Get 1 user
+usersRouter.get('/:id', async (req, res) => {
+
+    console.info(`${req.method} request received for it work`);
+  
+    try {
+      const usersData = await User.findByPk(req.params.id, {
+        // Need to do a task, I am pretty SUre
+      });
+  
+  
+      if (!usersData) {
+        res.status(404).json({ message: 'No user found with this id!' });
+        return;
+      }
+  
+      res.status(200).json(usersData);
+  
+    } catch (err) {
+  
+      console.log(req.params.id);
+  
+      res.status(500).json(err);
+    }
+  
+  });
+  
 
 module.exports = usersRouter;
