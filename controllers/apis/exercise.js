@@ -75,8 +75,14 @@ exerciseRouter.get('/:id', async (req, res) => {
 
 
 
-
-    
+    // Attempt 0: Just as it is (an JSON Object?)
+    // console.log(powerData);
+    // Attempt 1: Turns into a string
+    // console.log(JSON.stringify(powerData));
+    // Attempt 2: Get First element from JSON (Does not work-undefined)
+    // console.log(powerData[0]);
+     // Attempt 3: Parse object
+    // console.log(JSON.parse(powerData));
 
 
     if (!exerciseData) {
@@ -84,6 +90,8 @@ exerciseRouter.get('/:id', async (req, res) => {
       return;
     }
 
+
+    // Print to Screen
     res.status(200).json(exerciseData);
 
 
