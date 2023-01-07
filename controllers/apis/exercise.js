@@ -74,6 +74,28 @@ exerciseRouter.get('/:id', async (req, res) => {
 
 
 
+    
+
+
+
+    // console.log(powerData.powerInfo[0].reps * powerData.powerInfo[0].weight) ;
+
+
+    const numberSets = powerData.powerInfo.length;
+    const calculatedPower = 0;
+    
+// Calculate Power for all sets
+for (let i = 0; i <= numberSets; i++) {
+//     const setPower = powerData.powerInfo[i].reps * powerData.powerInfo[i].weight;
+//     console.log(setPower);
+//     calculatedPower = calculatedPower + setPower;
+console.log(i);
+}
+
+
+// console.log(calculatedPower);
+
+
 
     // Attempt 0: Just as it is (an JSON Object?)
     // console.log(powerData);
