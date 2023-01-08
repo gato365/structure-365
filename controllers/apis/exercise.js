@@ -33,7 +33,7 @@ exerciseRouter.post('/', async (req, res) => {
 
 
 
-  
+
 });
 
 
@@ -53,6 +53,33 @@ exerciseRouter.get('/', async (req, res) => {
 
 
 
+
+function addPowerSets(tmpPowerJSON) {
+
+  // Find Length of JSON
+  const numberSets = tmpPowerJSON.length;
+  // Empty Array for Powers per set
+  const calculatedPower = [];
+
+  // Calculate Power for all sets
+  for (let i = 0; i < numberSets; i++) {
+    let setPower = tmpPowerJSON[i].reps * tmpPowerJSON[i].weight;
+    calculatedPower.push(setPower);
+  }
+
+
+  // Find the sum of Power for set
+  let sumPower = 0;
+  for (let i = 0; i < numberSets; i++) {
+    sumPower += calculatedPower[i];
+  }
+
+
+  return sumPower;
+}
+
+
+
 // 3) Get 1 exercise
 exerciseRouter.get('/:id', async (req, res) => {
 
@@ -60,42 +87,36 @@ exerciseRouter.get('/:id', async (req, res) => {
 
   try {
     const exerciseData = await Exercise.findByPk(req.params.id, {
-      // Need to do a task, I am pretty SUre
-      // include:  ['powerInfo'],
+    
     });
 
+    const newExerciseData = exerciseData.get({ plain: true })
 
-
-
-
-    const powerData = await Exercise.findByPk(req.params.id,{
+      //  ~~~~~~~~~~~~~~~~~~~  Calculation of Power BLOCK ~~~~~~~~~~~~~~~~~~~~~~//
+    const powerData = await Exercise.findByPk(req.params.id, {
       attributes: ['powerInfo'],
     });
+    const plainPowerData = powerData.get({ plain: true });
+    const calcultedPower = addPowerSets(plainPowerData.powerInfo);
+    newExerciseData.powerBig = calcultedPower;
+    console.log(newExerciseData);
+    
+    //  ~~~~~~~~~~~~~~~~~~~  Calculation of Power BLOCK ~~~~~~~~~~~~~~~~~~~~~~//
+    // console.log(exerciseData)
 
 
 
 
-    // Attempt 0: Just as it is (an JSON Object?)
-    // console.log(powerData);
-    // Attempt 1: Turns into a string
-    // console.log(JSON.stringify(powerData));
-    // Attempt 2: Get First element from JSON (Does not work-undefined)
-    // console.log(powerData[0]);
-     // Attempt 3: Parse object
-    // console.log(JSON.parse(powerData));
-
-
+    
     if (!exerciseData) {
       res.status(404).json({ message: 'No exercise found with this id!' });
       return;
     }
 
 
-    // Print to Screen
-    res.status(200).json(exerciseData);
 
+    res.status(200).json(newExerciseData);
 
-    
   } catch (err) {
 
     console.log(req.params.id);
