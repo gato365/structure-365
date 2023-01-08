@@ -3,7 +3,7 @@
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-          <button class="delete is-medium"></button>
+          <button id="loginBackbutton" class="delete is-medium"></button>
           <form class="box has-background-grey-lighter">
             <div class="field">
               <label class="label">Email</label>
@@ -72,6 +72,11 @@
    document.querySelector('#signup_button').addEventListener('click', (event) => {
     event.preventDefault();
     window.location.replace('/signup');
+   });
+
+    document.querySelector('#loginBackbutton').addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.replace('/landing');
    });
 
 </script>
