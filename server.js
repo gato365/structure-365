@@ -20,13 +20,13 @@ const app = express();
 const PORT = process.env.PORT ||3001;
 
 // Middleware 
-app.use(express.json()); 
+app.use(express.json());  
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 
 // Use the main router
-app.engine("handlebars", handlebars.engine);
+app.engine("handlebars", handlebars.engine); 
 app.set('view engine', 'handlebars');
 app.use(mainRouter);
 
