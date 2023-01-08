@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // Use the main router
-app.engine("handlebars", expressHandlebars.engine());
+app.engine("handlebars", handlebars.engine);
 app.set('view engine', 'handlebars');
 app.use(mainRouter);
 
