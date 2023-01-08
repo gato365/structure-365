@@ -31,7 +31,7 @@
               </label>
             </div>
             <div class="field level">
-              <p id="signup_button" class="is-size-7 has-text-link ml-2" href="">Sign Up</p>
+              <a id="signup_button" class="is-size-7 has-text-link ml-2" href="">Sign Up</a>
               <button id="login_button" class="button is-normal is-responsive is-primary level-right">
                 Login
               </button>
@@ -64,8 +64,14 @@
       if (!result.ok) {
         document.querySelector('#errors').textContent = 'Incorrect Email or Password.';
       } else {
+        window.location.replace('/');
       }
     })
+   });
+
+   document.querySelector('#signup_button').addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.replace('/signup');
    });
 
 </script>
