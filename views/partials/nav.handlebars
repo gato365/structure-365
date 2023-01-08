@@ -49,6 +49,9 @@
           <a id="navLoginbutton" class="button is-light">
             Log in
           </a>
+          <a id="navLogoutbutton" class="button is-light">
+            Log Out
+          </a>
         </div>
       </div>
     </div>
@@ -59,10 +62,24 @@
   document.querySelector('#navSignupbutton').addEventListener('click', (event) => {
     event.preventDefault();
     window.location.replace('/signup');
-  })
+  });
   
   document.querySelector('#navLoginbutton').addEventListener('click', (event) => {
     event.preventDefault();
     window.location.replace('/login');
-  })
+  });
+
+  document.querySelector('#navLogoutbutton').addEventListener('click', (event) => {
+    event.preventDefault();
+    fetch('/api/user/logout', {
+      method: 'POST',
+    }).then ((result) => {
+      if (!result.ok) {
+        console.log('cookie clear failed');
+      } else {
+        console.log('cookie clear passed');
+        window.location.replace('/landing');
+      }
+    })
+  });
 </script>

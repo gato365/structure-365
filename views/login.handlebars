@@ -60,7 +60,6 @@
         password,
       }),
     }).then((result) => {
-      console.log(result);
       if (!result.ok) {
         document.querySelector('#errors').textContent = 'Incorrect Email or Password.';
       } else {

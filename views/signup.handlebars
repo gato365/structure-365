@@ -52,11 +52,12 @@
     let password = document.querySelector('#password_signup').value;
     let passwordCheck = document.querySelector('#password_signup_check').value;
     
-    if (password != passwordCheck) {
-      return;
-    }
 
     document.querySelector('#signup_errors').textContent = '';
+    if (password != passwordCheck) {
+      document.querySelector('#signup_errors').textContent = 'Passwords do not match';
+      return;
+    }
     fetch('/api/user', {
       method: 'POST',
       headers: {
@@ -70,9 +71,8 @@
     }).then((result) => {
       if (!result.ok) {
         document.querySelector('#signup_errors').textContent = 'Invalid Username, Email, or Password';
-
       } else {
-
+        window.location.replace('/');
       }
     })
   });
@@ -80,5 +80,5 @@
   document.querySelector('#signupBackbutton').addEventListener('click', (event) => {
     event.preventDefault();
     window.location.replace('/landing');
-   });
+  });
 </script>
