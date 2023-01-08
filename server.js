@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const { engine } = require("express-handlebars");
+const expressHandlebars = require("express-handlebars");
 const cookieParser = require('cookie-parser');
 
 // Access connection to sequelize
@@ -10,7 +10,7 @@ const mainRouter = require("./controllers");
 const pathRouter = require("./controllers/pathRouter");
 const helpers = require('./helpers/helpers');
 
-const handlebars = engine.create({helpers});
+const handlebars = expressHandlebars.create({helpers});
 
 // Creating the App
 const app = express();
@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // Use the main router
-app.engine("handlebars", engine());
+app.engine("handlebars", expressHandlebars.engine());
 app.set('view engine', 'handlebars');
 app.use(mainRouter);
 
