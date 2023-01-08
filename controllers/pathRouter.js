@@ -41,12 +41,12 @@ pathRouter.get('/', async (req, res) => {
             res.status(500).end("bad things happened here");
         }
     }
-    
-
 })
 
 pathRouter.get('/landing', (req, res) => {
-    res.render('landing');
+    res.render('landing', {
+        style: 'landing.css',
+    });
 })
 
 pathRouter.get('/login', (req, res) => {
