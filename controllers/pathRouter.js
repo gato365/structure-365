@@ -7,13 +7,13 @@ const auth = require('../middleware/auth');
 const pathRouter = new Router();
 
 pathRouter.get('/', auth, async (req, res) => {
-    const { logintoken } = req.cookies;
+    // const { logintoken } = req.cookies;
 
-    try {
-        const data = jwt.verify(logintoken, process.env.JWT_KEY);
-        const { id } = data;
+    // try {
+    //     const data = jwt.verify(logintoken, process.env.JWT_KEY);
+    //     const { id } = data;
 
-        const user = await User.findByPk(id);
+    //     const user = await User.findByPk(id);
         const plainUser = req.user.get({plain: true});
 
         res.render('home', {
@@ -35,13 +35,13 @@ pathRouter.get('/', auth, async (req, res) => {
             ]
             // ~~~~~~~~~~~~~~~~~~ TEST ~~~~~~~~~~~~~~~~~~~//
         });
-    } catch(error) {
-        if(error.message === "invalid token" || error.message === "jwt must be provided") {
-            res.redirect('/login');
-        } else {
-            res.status(500).end("bad things happened here");
-        }
-    }
+    // } catch(error) {
+    //     if(error.message === "invalid token" || error.message === "jwt must be provided") {
+    //         res.redirect('/login');
+    //     } else {
+    //         res.status(500).end("bad things happened here");
+    //     }
+    // }
 })
 
 pathRouter.get('/landing', (req, res) => {
