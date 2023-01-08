@@ -1,36 +1,39 @@
-{{!-- <section class="hero has-background-grey is-fullheight"> --}}
-    This is the homepage
-<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-{{!-- </section> --}}
+<section class="has-background-grey is-fullheight" style="height:100vh">
+  welcome {{user.username}}<br>
+
+  This is the homepage <br>
+
+  <div style="background-color: white;">
+    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script>
+    const xyValues = {{{ jsonHelper chartData }}};
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    new Chart("myChart", {
+      type: "scatter",
+      data: {
+        datasets: [{
+          pointRadius: 4,
+          pointBackgroundColor: "rgb(0,0,255)",
+          data: xyValues
+        }]
+      },
+      options: {
+        legend: {display: false},
+        scales: {
+          xAxes: [{ticks: {min: 40, max:160}}],
+          yAxes: [{ticks: {min: 6, max:16}}],
+        }
+      }
+    });
 
-<script>
-const xyValues = {{{ jsonHelper chartData }}};
-
-
-
-new Chart("myChart", {
-  type: "scatter",
-  data: {
-    datasets: [{
-      pointRadius: 4,
-      pointBackgroundColor: "rgb(0,0,255)",
-      data: xyValues
-    }]
-  },
-  options: {
-    legend: {display: false},
-    scales: {
-      xAxes: [{ticks: {min: 40, max:160}}],
-      yAxes: [{ticks: {min: 6, max:16}}],
-    }
-  }
-});
-
-</script>
-
+    </script>
+  </div>
+  
+</section>
 
 

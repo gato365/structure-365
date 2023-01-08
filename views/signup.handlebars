@@ -70,9 +70,9 @@
     }).then((result) => {
       if (!result.ok) {
         document.querySelector('#signup_errors').textContent = 'Invalid Username, Email, or Password';
-        return null;
+
       } else {
-        return result.json();
+
       }
     })
    });
