@@ -49,7 +49,6 @@
     let email = document.querySelector('#email_input').value;
     let password = document.querySelector('#password_input').value;
     
-    console.log( email, password);
     document.querySelector('#errors').textContent = '';
     fetch('/api/user/login', {
       method: 'POST',
@@ -61,11 +60,10 @@
         password,
       }),
     }).then((result) => {
+      console.log(result);
       if (!result.ok) {
         document.querySelector('#errors').textContent = 'Incorrect Email or Password.';
-        return null;
       } else {
-        return result.json();
       }
     })
    });
