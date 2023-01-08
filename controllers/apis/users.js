@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const { User } = require('../../models'); 
+const { Cookie } = require("express-session");
+const { signedCookie } = require("cookie-parser");
 //Issue with Ben's Code: const { User } = require('../../models/User');
 
 const usersRouter = new Router();
@@ -10,80 +12,89 @@ const usersRouter = new Router();
 
 // 1) POST to place a new user (by login)
 usersRouter.post("/login", async (req, res) => {
-    const { email, password } = req.body;
+  const { email, password } = req.body;
 
-    //set user to the email being passed in
-    let user = await User.findOne({ where: {email} }); //if user doesnt exist return error
-    
-    if (!user) {
-      res.status(401).end('User not Found');
-      return;
-    };
+  //set user to the email being passed in
+  let user = await User.findOne({ where: {email} }); //if user doesnt exist return error
+  
+  if (!user) {
+    res.status(401).end('User not Found');
+    return;
+  };
 
-    const passwordValid = bcrypt.compareSync(password, user.password);
+  const passwordValid = bcrypt.compareSync(password, user.password);
 
-    //need to check functionality of this password check too
-    if (!passwordValid) {
-      res.status(403).end("Bad password");
-      return;
-    }
+  //need to check functionality of this password check too
+  if (!passwordValid) {
+    res.status(403).end("Bad password");
+    return;
+  }
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_KEY);
+  const token = jwt.sign({ id: user.id }, process.env.JWT_KEY);
 
-    res.cookie('logintoken',token, { httpOnly: true });
+  res.cookie('logintoken',token, { httpOnly: true });
 
-    res.end();
+  res.end();
 });
 
 
+//clear the user's cookie for logout
+usersRouter.post("/logout", async (req, res) => {
+  console.log('clear was called');
+
+  res.clearCookie('logintoken');
+  res.end();
+});
 
 // 2) GET Route for retrieving all the users
 usersRouter.get('/', async (req, res) => {
 
-    try {
-      const userData = await User.findAll();
-      res.status(200).json(userData);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  
-  });
+  try {
+    const userData = await User.findAll();
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 
+});
+
+
+usersRouter.get('')
 
 // 3) POST to place a new user (in INSOMNIA)
 usersRouter.post('/', async (req, res) => {
-    const { username, email, password,  } = req.body;
+  const { username, email, password,  } = req.body;
 
-    console.error(username);
+  console.error(username);
 
-    //set user to the username being passed in
-    let user = await User.findOne({ where: {username}});
+  //set user to the username being passed in
+  let user = await User.findOne({ where: {username}});
 
-    //check to see if username has been used already
-    if (user) {
-        res.status(409).end('Username taken');
-        return;
-    };
+  //check to see if username has been used already
+  if (user) {
+    res.status(409).end('Username taken');
+    return;
+  };
 
-    //set user to the email being passed in
-    user = await User.findOne({ where: {email}});
+  //set user to the email being passed in
+  user = await User.findOne({ where: {email}});
 
-    //check to see if email has been used already
-    if (user) {
-        res.status(409).end('Email taken');
-        return;
-    };
+  //check to see if email has been used already
+  if (user) {
+      res.status(409).end('Email taken');
+      return;
+  };
 
-    const userData = await User.create({
-        username,
-        email,
-        password,
-    });
+  const userData = await User.create({
+      username,
+      email,
+      password,
+  });
 
-    //need to check functionality of this
-    res.status(200).json({
-        id: userData.id,
-    });
+  //need to check functionality of this
+  res.status(200).json({
+      id: userData.id,
+  });
 });
 
 
