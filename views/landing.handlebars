@@ -1,3 +1,23 @@
-<section class="has-background-grey-dark" >
-    
-</section>
+<div class="Aligner hero-body hero_height">
+  <div class="Aligner-item top"></div>
+  <div class="Aligner-item box is-size-1">
+    <div class="landing_title">
+      Structure
+    </div>
+    <div class="level">
+      <div class="level-item"></div>
+      <button id="get_started_button" class="button is-normal is-responsive is-primary level-item">
+        Get Started
+      </button>
+      <div class="level-item"></div>
+    </div>
+  </div>
+  <div class="Aligner-item bot"></div>
+</div>
+
+<script>
+  document.querySelector('#get_started_button').addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.replace('/signup');
+  })
+</script>
