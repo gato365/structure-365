@@ -2,10 +2,11 @@ const { Router } = require("express");
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/User');
+const auth = require('../middleware/auth');
 
 const pathRouter = new Router();
 
-pathRouter.get('/', async (req, res) => {
+pathRouter.get('/', auth, async (req, res) => {
     const { logintoken } = req.cookies;
 
     try {
@@ -13,7 +14,7 @@ pathRouter.get('/', async (req, res) => {
         const { id } = data;
 
         const user = await User.findByPk(id);
-        const plainUser = user.get({plain: true});
+        const plainUser = req.user.get({plain: true});
 
         res.render('home', {
             user: plainUser,

@@ -1,4 +1,6 @@
 const { Router } = require("express");
+
+const auth = require('../../middleware/auth');
 // const { readFromFile, readAndAppend } = require('../../helpers');
 const jwt = require("jsonwebtoken");
 
@@ -13,9 +15,10 @@ const exerciseRouter = new Router();
 
 
 
-exerciseRouter.post('/', async (req, res) => {
+exerciseRouter.post('/', auth, async (req, res) => {
   const { exerciseName, date, powerInfo } = req.body;
 
+  
   const newExercise = await Exercise.create({
     exerciseName,
     date,
