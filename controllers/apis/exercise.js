@@ -87,26 +87,27 @@ exerciseRouter.get('/:id', async (req, res) => {
 
   try {
     const exerciseData = await Exercise.findByPk(req.params.id, {
-
-
-      
-
+    
     });
 
+    const newExerciseData = exerciseData.get({ plain: true })
 
-
+      //  ~~~~~~~~~~~~~~~~~~~  Calculation of Power BLOCK ~~~~~~~~~~~~~~~~~~~~~~//
     const powerData = await Exercise.findByPk(req.params.id, {
       attributes: ['powerInfo'],
     });
-    const calcultedPower = addPowerSets(powerData.powerInfo);
-
-    exerciseData.powerBig = calcultedPower;
-
-    console.log(exerciseData)
+    const plainPowerData = powerData.get({ plain: true });
+    const calcultedPower = addPowerSets(plainPowerData.powerInfo);
+    newExerciseData.powerBig = calcultedPower;
+    console.log(newExerciseData);
     
+    //  ~~~~~~~~~~~~~~~~~~~  Calculation of Power BLOCK ~~~~~~~~~~~~~~~~~~~~~~//
+    // console.log(exerciseData)
+
+
+
+
     
-
-
     if (!exerciseData) {
       res.status(404).json({ message: 'No exercise found with this id!' });
       return;
@@ -114,11 +115,7 @@ exerciseRouter.get('/:id', async (req, res) => {
 
 
 
-
-    // Print to Screen
-    res.status(200).json(exerciseData);
-
-
+    res.status(200).json(newExerciseData);
 
   } catch (err) {
 

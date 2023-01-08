@@ -7,9 +7,14 @@ const cookieParser = require('cookie-parser');
 const sequelize = require('./config/connection')
 // Access to the routers (defaults to index.js)
 const mainRouter = require("./controllers");
+const pathRouter = require("./controllers/pathRouter");
+const helpers = require('./helpers/helpers');
+
+const handlebars = engine.create({helpers});
 
 // Creating the App
 const app = express();
+
 
 // Either on Heroku's port or my local port 
 const PORT = process.env.PORT ||3001;

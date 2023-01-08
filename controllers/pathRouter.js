@@ -1,9 +1,21 @@
-const { Router } = require ("express");
+const { Router } = require("express");
 
 const pathRouter = new Router();
 
 pathRouter.get('/', (req, res) => {
-    res.render('home');
+    res.render('home', {
+
+        // ~~~~~~~~~~~~~~~~~~ TEST ~~~~~~~~~~~~~~~~~~~//
+        chartData:  [
+            {
+                x: 5,
+                y: 10,
+            }
+        ]
+        // ~~~~~~~~~~~~~~~~~~ TEST ~~~~~~~~~~~~~~~~~~~//
+
+    });
+
 })
 
 pathRouter.get('/landing', (req, res) => {
