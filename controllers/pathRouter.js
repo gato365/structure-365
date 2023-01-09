@@ -40,8 +40,10 @@ pathRouter.get('/', auth, async (req, res) => {
        
 
 
+
     const dateT = [];
     const powerT = [];
+
 
     for (let i = 0; i < powerData.length; i++) {
         const infoDatePower = powerData[i];
