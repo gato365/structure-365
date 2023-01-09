@@ -6,7 +6,7 @@ const auth = require('../middleware/auth');
 
 const pathRouter = new Router();
 
-
+     
 
 
 function addPowerSets(tmpPowerJSON) {
@@ -48,7 +48,7 @@ pathRouter.get('/', auth, async (req, res) => {
         );
        
 
-
+ 
         const dateT = [];
         const powerT = [];
 
