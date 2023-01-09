@@ -67,7 +67,7 @@ pathRouter.get('/', auth, async (req, res) => {
             yPower: powerT,
    
         });
-    
+    }); 
 pathRouter.get('/landing', (req, res) => {
     res.render('landing', {
         style: 'landing.css',
