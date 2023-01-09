@@ -61,4 +61,10 @@ pathRouter.get('/nav', (req, res) => {
     res.render('nav');
 })
 
+pathRouter.get('/exercise', (req, res) => {
+    res.render('exercise', {
+        style: 'exercise.css',
+    });
+})
+
 module.exports = pathRouter;

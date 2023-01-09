@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/gato365/structure-365#readme",
   "dependencies": {
+    "@creativebulma/bulma-collapsible": "^1.0.4",
     "bcrypt": "^5.1.0",
     "connect-session-sequelize": "^7.1.5",
     "cookie-parser": "^1.4.6",
