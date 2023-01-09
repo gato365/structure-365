@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-
+const { Router } = require ("express");
 const User = require('../models/User');
 const auth = require('../middleware/auth');
 
@@ -67,7 +67,8 @@ pathRouter.get('/', auth, async (req, res) => {
             yPower: powerT,
    
         });
-    
+});
+
 pathRouter.get('/landing', (req, res) => {
     res.render('landing', {
         style: 'landing.css',
