@@ -21,7 +21,7 @@ function addPowerSets(tmpPowerJSON) {
         calculatedPower.push(setPower);
     }
 
-
+ 
     // Find the sum of Power for set
     let sumPower = 0;
     for (let i = 0; i < numberSets; i++) {
