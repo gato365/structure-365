@@ -1,7 +1,13 @@
 <section class="has-background-grey is-fullheight" style="height:100vh">
+  <div class="date_holder"></div>
+
   welcome {{user.username}}<br>
 
   This is the homepage <br>
+
+  <button id="get_exercise" class="button is-normal is-responsive is-primary level-right">
+    Exercise
+  </button>
 
   <div style="background-color: white;">
     <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
@@ -36,4 +42,12 @@
   
 </section>
 
+<script>
+    let time = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"2-digit"});
+    document.querySelector('.date_holder').textContent = time;
 
+  document.querySelector('#get_exercise').addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.replace('/exercise');
+   });
+</script>
