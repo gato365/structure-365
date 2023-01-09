@@ -1,28 +1,107 @@
 [
-    	{
-    		"exerciseName": "Leg Press",
-    		"date": "2022-10-12",
-    		"powerInfo": ""
-    	},
-    	{
-    		"exerciseName": "Bench Press",
-    		"date": "2022-10-13",
-    		"powerInfo": ""
-    	},
-    	{
-    		"exerciseName": "Chest Fly",
-    		"date": "2022-10-14",
-    		"powerInfo": ""
-    	},
-    	{
-    		"exerciseName": "Chest Press",
-    		"date": "2022-10-15",
-    		"powerInfo": ""
-        },
-    	{
-    		"exerciseName": "Calf Raise",
-    		"date": "2022-10-16",
-    		"powerInfo": 
-    [{"set": "1","reps": "10","weight": "40"},{"set": "1","reps": "10","weight": "40"},{"set": "1","reps": "10","weight": "40"}]
-    	}
-    ]
+	{
+		"exerciseName": "Leg Press",
+		"date": "2022-10-12",
+		"powerInfo": [
+			{
+				"set": 1,
+				"reps": 10,
+				"weight": 50
+			},
+			{
+				"set": 2,
+				"reps": 10,
+				"weight": 70
+			},
+			{
+				"set": 3,
+				"reps": 10,
+				"weight": 90
+			}
+		]
+	},
+	{
+		"exerciseName": "Bench Press",
+		"date": "2022-10-13",
+		"powerInfo": [
+			{
+				"set": 1,
+				"reps": 10,
+				"weight": 50
+			},
+			{
+				"set": 2,
+				"reps": 10,
+				"weight": 70
+			},
+			{
+				"set": 3,
+				"reps": 10,
+				"weight": 90
+			}
+		]
+	},
+	{
+		"exerciseName": "Chest Fly",
+		"date": "2022-10-14",
+		"powerInfo": [
+			{
+				"set": 1,
+				"reps": 10,
+				"weight": 50
+			},
+			{
+				"set": 2,
+				"reps": 10,
+				"weight": 70
+			},
+			{
+				"set": 3,
+				"reps": 10,
+				"weight": 90
+			}
+		]
+	},
+	{
+		"exerciseName": "Chest Press",
+		"date": "2022-10-15",
+		"powerInfo": [
+			{
+				"set": 1,
+				"reps": 10,
+				"weight": 50
+			},
+			{
+				"set": 2,
+				"reps": 10,
+				"weight": 70
+			},
+			{
+				"set": 3,
+				"reps": 10,
+				"weight": 90
+			}
+		]
+	},
+	{
+		"exerciseName": "Calf Raise",
+		"date": "2022-10-16",
+		"powerInfo": [
+			{
+				"set": 1,
+				"reps": 10,
+				"weight": 50
+			},
+			{
+				"set": 2,
+				"reps": 10,
+				"weight": 70
+			},
+			{
+				"set": 3,
+				"reps": 10,
+				"weight": 90
+			}
+		]
+	}
+]

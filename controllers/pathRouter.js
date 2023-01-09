@@ -1,29 +1,102 @@
 const { Router } = require("express");
+const { Exercise } = require("../models");
 
 const pathRouter = new Router();
 
-pathRouter.get('/', (req, res) => {
-    res.render('home', {
 
-        // ~~~~~~~~~~~~~~~~~~ TEST ~~~~~~~~~~~~~~~~~~~//
-        chartData: [
-            { x: 50, y: 7 },
-            { x: 60, y: 8 },
-            { x: 70, y: 8 }, 
-            { x: 80, y: 9 },
-            { x: 90, y: 9 },
-            { x: 100, y: 9 },
-            { x: 110, y: 10 },
-            { x: 120, y: 11 },
-            { x: 130, y: 14 },
-            { x: 140, y: 14 },
-            { x: 150, y: 15 }
 
-        ]
-        // ~~~~~~~~~~~~~~~~~~ TEST ~~~~~~~~~~~~~~~~~~~//
+function addPowerSets(tmpPowerJSON) {
 
-    });
+    // Find Length of JSON
+    const numberSets = tmpPowerJSON.length;
+    // Empty Array for Powers per set
+    const calculatedPower = [];
 
+    // Calculate Power for all sets
+    for (let i = 0; i < numberSets; i++) {
+        let setPower = tmpPowerJSON[i].reps * tmpPowerJSON[i].weight;
+        calculatedPower.push(setPower);
+    }
+
+
+    // Find the sum of Power for set
+    let sumPower = 0;
+    for (let i = 0; i < numberSets; i++) {
+        sumPower += calculatedPower[i];
+    }
+
+
+    return sumPower;
+}
+
+
+
+pathRouter.get('/', async (req, res) => {
+
+    // try {
+
+
+
+        // Is this where I do the following
+        const newExerciseData = await Exercise.findAll() // Fileter based on user
+
+
+
+        // const newExerciseData = exerciseData.get({ plain: true })
+
+        //  ~~~~~~~~~~~~~~~~~~~  Calculation of Power BLOCK ~~~~~~~~~~~~~~~~~~~~~~//
+      const powerData = newExerciseData.map(({ powerInfo }) => 
+        powerInfo 
+        );
+        console.log(powerData);
+
+        for (let i = 0; i < powerData.length; i++) {
+             const m = addPowerSets(powerData[i]);
+             console.log(m);
+        }
+
+    //   const plainPowerData = powerData.get({ plain: true });
+    //   const calcultedPower = addPowerSets(powerData.powerInfo);
+    //   newExerciseData.powerBig = calcultedPower;
+    //   console.log(newExerciseData);
+      
+      //  ~~~~~~~~~~~~~~~~~~~  Calculation of Power BLOCK ~~~~~~~~~~~~~~~~~~~~~~//
+      // console.log(exerciseData)
+  
+    // }   catch (err) {
+
+    //     console.log(req.params);
+    
+    //     res.status(500).json(err);
+    //   }
+
+        // ~~~~~~~~~~~~~~~~~~ 
+
+    
+
+        res.render('home', {
+
+            // ~~~~~~~~~~~~~~~~~~ TEST ~~~~~~~~~~~~~~~~~~~//
+            chartData: [
+                { x: 50, y: 7 },
+                { x: 60, y: 8 },
+                { x: 70, y: 8 },
+                { x: 80, y: 9 },
+                { x: 90, y: 9 },
+                { x: 100, y: 9 },
+                { x: 110, y: 10 },
+                { x: 120, y: 11 },
+                { x: 130, y: 14 },
+                { x: 140, y: 14 },
+                { x: 150, y: 15 }
+
+            ]
+            // ~~~~~~~~~~~~~~~~~~ TEST ~~~~~~~~~~~~~~~~~~~//
+
+
+
+        });
+    
 })
 
 pathRouter.get('/landing', (req, res) => {

@@ -12,7 +12,13 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  for (const exercise of exerciseData) {
+  // for (const exercise of exerciseData) { 
+  for (let i = 0; i < 15; i++) {
+
+    const exercise = exerciseData[Math.floor(Math.random() * exerciseData.length)]
+
+
+    exercise.powerInfo = JSON.stringify(exercise.powerInfo)
     await Exercise.create({
       ...exercise,
       user_id: users[Math.floor(Math.random() * users.length)].id,
