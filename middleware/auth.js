@@ -22,7 +22,7 @@ module.exports = async (req, res, next) => {
         if(error.message === "invalid token") {
             res.redirect('/landing');
         } else if (error.message === "jwt must be provided") {
-           res.redirect('/login');
+           res.redirect('/landing');
         } else {
             res.status(500).end("bad things happened here");
         }
