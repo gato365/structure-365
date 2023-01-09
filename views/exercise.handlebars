@@ -1,12 +1,14 @@
-<section>
-	<div class="date_holder box"></div>
-	<div class="box">
+<section class="has-background-grey-dark">
+	<div class="date_holder box has-background-grey-lighter"></div>
+	<div class="box has-background-grey-lighter">
 		<article>
 			<div class="message-header accordion">
 				<a>Exercise 1</a>
 			</div>
 			<div class="message-body">
-				<span style="font-weight:bolder; font-size:x-large">Exercise Name: </span> <input type="text">
+				<div class="message-body-content box">
+					<span style="font-weight:bolder; font-size:x-large">Exercise Name: </span> <input type="text">
+				</div>
 				<div class="message-body-content box">
 					<span style="font-weight:bolder; font-size:x-large">Set 1: </span> weight:  <input type="text"> reps:  <input type="text">
 				</div>
@@ -23,7 +25,9 @@
 				<a>Exercise 2</a>
 			</div>
 			<div class="message-body">
-				<span style="font-weight:bolder; font-size:x-large">Exercise Name: </span> <input type="text">
+				<div class="message-body-content box">
+					<span style="font-weight:bolder; font-size:x-large">Exercise Name: </span> <input type="text">
+				</div>
 				<div class="message-body-content box">
 					<span style="font-weight:bolder; font-size:x-large">Set 1:</span> weight:  <input type="text"> reps:  <input type="text">
 				</div>
@@ -40,7 +44,9 @@
 				<a>Exercise 3</a>
 			</div>
 			<div class="message-body">
-				<span style="font-weight:bolder; font-size:x-large">Exercise Name: </span> <input type="text">
+				<div class="message-body-content box">
+					<span style="font-weight:bolder; font-size:x-large">Exercise Name: </span> <input type="text">
+				</div>
 				<div class="message-body-content box">
 					<span style="font-weight:bolder; font-size:x-large">Set 1:</span> weight:  <input type="text"> reps:  <input type="text">
 				</div>
@@ -52,6 +58,11 @@
 				</div>
 			</div>
 		</article>
+	</div>
+	<div class="buttons is-centered box">
+		<button id="submit_button" class="button is-normal is-responsive is-primary level-right">
+			Submit Exercises
+		</button>
 	</div>
 </section>
 

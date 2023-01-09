@@ -1,23 +1,19 @@
 <nav class="navbar has-background-grey-darker" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="http://localhost:8080/login">
-      <img src="https://imgs.search.brave.com/tcNNqntp0SKcw8VvoiiGQbbWxhMs0WqIzE31kQ-i_sk/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvcHJl/dmlld3MvMDAxLzIy/Ni8yMjEvb3JpZ2lu/YWwvYWJzdHJhY3Qt/b3JhbmdlLXBvbHln/b25hbC1iYW5uZXIt/dmVjdG9yLmpwZw" width="112" height="28">
+    <a class="navbar-item" href="http://localhost:3001/">
+      <img src="https://i.imgur.com/UrtfYcs.png">
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navItems">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
+      <span class="burger_line" aria-hidden="true"></span>
+      <span class="burger_line" aria-hidden="true"></span>
+      <span class="burger_line" aria-hidden="true"></span>
     </a>
   </div>
 
-  <div id="navItems" class="navbar-menu">
+  <div id="navItems" class="navbar-menu ">
     <div class="navbar-start">
-      <a class="navbar-item">
-        Home
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
+      {{!-- <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           More
         </a>
@@ -37,7 +33,7 @@
             Report an issue
           </a>
         </div>
-      </div>
+      </div> --}}
     </div>
 
     <div class="navbar-end">
@@ -82,4 +78,25 @@
       }
     })
   });
+
+  document.addEventListener('DOMContentLoaded', () => {
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Add a click event on each of them
+  $navbarBurgers.forEach( el => {
+    el.addEventListener('click', () => {
+
+      // Get the target from the "data-target" attribute
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+
+    });
+  });
+
+});
 </script>

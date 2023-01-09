@@ -1,6 +1,21 @@
-
 .box {
     text-align: center;
     opacity: 100%;
     flex: 1;
   }
+
+.accordion a {
+  text-decoration: none;
+  color: hsl(171, 100%, 41%) !important;
+}
+
+.burger_line {
+  color: #00d1b2;
+}
+
+
+@media screen and (max-width: 1023px) {
+  .navbar-menu {
+    background-color: hsl(0, 0%, 21%) !important;
+  }
+}

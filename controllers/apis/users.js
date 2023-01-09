@@ -5,7 +5,6 @@ const bcrypt = require("bcrypt");
 const { User } = require('../../models'); 
 const { Cookie } = require("express-session");
 const { signedCookie } = require("cookie-parser");
-//Issue with Ben's Code: const { User } = require('../../models/User');
 
 const usersRouter = new Router();
 
