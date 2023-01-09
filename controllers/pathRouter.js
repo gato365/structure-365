@@ -88,4 +88,65 @@ pathRouter.get('/exercise', (req, res) => {
     });
 })
 
+
+
+
+pathRouter.get("/exercise/:id", auth, async (req, res) => {
+    const { id } = req.params;
+    
+
+    const exercise = await Exercise.findByPk(id);
+
+    console.log(exercise); 
+    if (!exercise) {
+        res.status(404).end("No such exercise");
+        return;
+    }
+
+    const exerciseSimple = exercise.get({ simple: true });
+
+    // const pledges = await Pledge.findAll({
+    //     where: {
+    //         ProjectId: id,
+    //     },
+    // });
+
+    // const totalPledged = pledges.reduce((sum, pledge) => {
+    //     return sum + pledge.amount;
+    // }, 0);
+
+    // let userPledge = null;
+    // if (req.user) {
+    //     userPledge = await Pledge.findOne({
+    //         where: {
+    //             ProjectId: project.id,
+    //             UserId: req.user.id,
+    //         },
+    //     });
+    //     userPledge = userPledge.get({ simple: true });
+    // }
+
+    // res.render('project', {
+    //     project: projectSimple,
+    //     isCreator: req.user?.id === project.creatorId,
+    //     isLoggedIn: !!req.user,
+    //     userPledge,
+    //     totalPledged,
+    // });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = pathRouter;
