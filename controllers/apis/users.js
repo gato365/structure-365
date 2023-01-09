@@ -37,6 +37,13 @@ usersRouter.post("/login", async (req, res) => {
   res.end();
 });
 
+usersRouter.post("/signup", async (req, res) => {
+  const token = jwt.sign({ id: user.id }, process.env.JWT_KEY);
+
+  res.cookie('logintoken',token, { httpOnly: true });
+
+  res.end();
+});
 
 //clear the user's cookie for logout
 usersRouter.post("/logout", async (req, res) => {
