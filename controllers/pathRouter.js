@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { Router } = require ("express");
 const User = require('../models/User');
+const Exercise = require('../models/Exercise');
 const auth = require('../middleware/auth');
 
 const pathRouter = new Router();

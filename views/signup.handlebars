@@ -68,9 +68,11 @@
         email,
         password,
       }),
+      
     }).then((result) => {
-      console.log(result);
+      
       if (!result.ok) {
+        
         document.querySelector('#signup_errors').textContent = 'Invalid Username, Email, or Password';
       } else {
         window.location.replace('/');
