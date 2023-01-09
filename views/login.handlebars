@@ -3,7 +3,7 @@
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-          <button class="delete is-medium"></button>
+          <button id="loginBackbutton" class="delete is-medium"></button>
           <form class="box has-background-grey-lighter">
             <div class="field">
               <label class="label">Email</label>
@@ -31,7 +31,7 @@
               </label>
             </div>
             <div class="field level">
-              <p id="signup_button" class="is-size-7 has-text-link ml-2" href="">Sign Up</p>
+              <a id="signup_button" class="is-size-7 has-text-link ml-2" href="">Sign Up</a>
               <button id="login_button" class="button is-normal is-responsive is-primary level-right">
                 Login
               </button>
@@ -49,7 +49,6 @@
     let email = document.querySelector('#email_input').value;
     let password = document.querySelector('#password_input').value;
     
-    console.log( email, password);
     document.querySelector('#errors').textContent = '';
     fetch('/api/user/login', {
       method: 'POST',
@@ -63,11 +62,20 @@
     }).then((result) => {
       if (!result.ok) {
         document.querySelector('#errors').textContent = 'Incorrect Email or Password.';
-        return null;
       } else {
-        return result.json();
+        window.location.replace('/');
       }
     })
+   });
+
+   document.querySelector('#signup_button').addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.replace('/signup');
+   });
+
+    document.querySelector('#loginBackbutton').addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.replace('/landing');
    });
 
 </script>

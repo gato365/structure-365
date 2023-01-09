@@ -1,12 +1,19 @@
-{{!-- <section class="hero has-background-grey is-fullheight"> --}}
-  This is the homepage
+
+
+
+<section class="has-background-grey is-fullheight" style="height:100vh">
+  <div class="date_holder"></div>
+
+
+  welcome {{user.username}}<br>
+
+  This is the homepage <br>
   <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-  {{!--
-</section> --}}
 
+  <button id="get_exercise" class="button is-normal is-responsive is-primary level-right">
+    Exercise
+  </button>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 <script>
   Array.prototype.max = function() {
@@ -47,9 +54,48 @@ console.log(yPower);
     }
   });
 
+  <div style="background-color: white;">
+    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script>
+    const xyValues = {{{ jsonHelper chartData }}};
 
 
 
 
+    new Chart("myChart", {
+      type: "scatter",
+      data: {
+        datasets: [{
+          pointRadius: 4,
+          pointBackgroundColor: "rgb(0,0,255)",
+          data: xyValues
+        }]
+      },
+      options: {
+        legend: {display: false},
+        scales: {
+          xAxes: [{ticks: {min: 40, max:160}}],
+          yAxes: [{ticks: {min: 6, max:16}}],
+        }
+      }
+    });
+
+    </script>
+  </div>
+  
+</section>
+
+
+<script>
+    let time = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"2-digit"});
+    document.querySelector('.date_holder').textContent = time;
+
+  document.querySelector('#get_exercise').addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.replace('/exercise');
+   });
 
 </script>

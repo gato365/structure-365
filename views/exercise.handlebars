@@ -1,0 +1,78 @@
+<section>
+	<div class="date_holder box"></div>
+	<div class="box">
+		<article>
+			<div class="message-header accordion">
+				<a>Exercise 1</a>
+			</div>
+			<div class="message-body">
+				<span style="font-weight:bolder; font-size:x-large">Exercise Name: </span> <input type="text">
+				<div class="message-body-content box">
+					<span style="font-weight:bolder; font-size:x-large">Set 1: </span> weight:  <input type="text"> reps:  <input type="text">
+				</div>
+				<div class="message-body-content box">
+					<span style="font-weight:bolder; font-size:x-large">Set 2: </span> weight:  <input type="text"> reps:  <input type="text">
+				</div>
+				<div class="message-body-content box">
+					<span style="font-weight:bolder; font-size:x-large">Set 3: </span> weight:  <input type="text"> reps:  <input type="text">
+				</div>
+			</div>
+		</article>
+		<article>
+			<div class="message-header accordion">
+				<a>Exercise 2</a>
+			</div>
+			<div class="message-body">
+				<span style="font-weight:bolder; font-size:x-large">Exercise Name: </span> <input type="text">
+				<div class="message-body-content box">
+					<span style="font-weight:bolder; font-size:x-large">Set 1:</span> weight:  <input type="text"> reps:  <input type="text">
+				</div>
+				<div class="message-body-content box">
+					<span style="font-weight:bolder; font-size:x-large">Set 2:</span> weight:  <input type="text"> reps:  <input type="text">
+				</div>
+				<div class="message-body-content box">
+					<span style="font-weight:bolder; font-size:x-large">Set 3:</span> weight:  <input type="text"> reps:  <input type="text">
+				</div>
+			</div>
+		</article>
+		<article>
+			<div class="message-header accordion">
+				<a>Exercise 3</a>
+			</div>
+			<div class="message-body">
+				<span style="font-weight:bolder; font-size:x-large">Exercise Name: </span> <input type="text">
+				<div class="message-body-content box">
+					<span style="font-weight:bolder; font-size:x-large">Set 1:</span> weight:  <input type="text"> reps:  <input type="text">
+				</div>
+				<div class="message-body-content box">
+					<span style="font-weight:bolder; font-size:x-large">Set 2:</span> weight:  <input type="text"> reps:  <input type="text">
+				</div>
+				<div class="message-body-content box">
+					<span style="font-weight:bolder; font-size:x-large">Set 3:</span> weight:  <input type="text"> reps:  <input type="text">
+				</div>
+			</div>
+		</article>
+	</div>
+</section>
+
+
+<script>
+    let time = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"2-digit"});
+    document.querySelector('.date_holder').textContent = time;
+
+
+    let acc = document.getElementsByClassName("accordion");
+    let i;
+
+    for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        /* Toggle between hiding and showing the active panel */
+        let panel = this.nextElementSibling;
+        if (panel.style.display === "none") {
+        panel.style.display = "block";
+        } else {
+        panel.style.display = "none";
+        }
+    });
+    }
+</script>
