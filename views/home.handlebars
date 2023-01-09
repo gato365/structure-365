@@ -1,13 +1,58 @@
+
+
+
 <section class="has-background-grey is-fullheight" style="height:100vh">
   <div class="date_holder"></div>
+
 
   welcome {{user.username}}<br>
 
   This is the homepage <br>
+  <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
 
   <button id="get_exercise" class="button is-normal is-responsive is-primary level-right">
     Exercise
   </button>
+
+
+<script>
+  Array.prototype.max = function() {
+  return Math.max.apply(null, this);
+};
+
+Array.prototype.min = function() {
+  return Math.min.apply(null, this);
+};
+  const xyValues = {{{ jsonHelper chartData }}};
+
+    const xDate = {{{ jsonHelper xDate }}};
+    const yPower = {{{ jsonHelper yPower }}};
+
+
+console.log(xDate);
+console.log(yPower);
+
+
+  new Chart("myChart", {
+    type: "line",
+    data: {
+      labels: xDate,
+      datasets: [{
+        label: 'Line Chart',
+        data: yPower,
+        backgroundColor: 'rgba(0, 0, 0, 0)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      legend: { display: false },
+      scales: {
+        xAxes: [{ ticks: { min: 40, max: 160 } }],
+        yAxes: [{ ticks: { min: yPower.min()-100, max: yPower.max()+100 } }],
+      }
+    }
+  });
 
   <div style="background-color: white;">
     <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
@@ -16,6 +61,7 @@
 
     <script>
     const xyValues = {{{ jsonHelper chartData }}};
+
 
 
 
@@ -42,6 +88,7 @@
   
 </section>
 
+
 <script>
     let time = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"2-digit"});
     document.querySelector('.date_holder').textContent = time;
@@ -50,4 +97,5 @@
     event.preventDefault();
     window.location.replace('/exercise');
    });
+
 </script>

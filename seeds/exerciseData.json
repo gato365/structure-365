@@ -1,0 +1,107 @@
+[
+	{
+		"exerciseName": "Leg Press",
+		"date": "2022-10-12",
+		"powerInfo": [
+			{
+				"set": 1,
+				"reps": 10,
+				"weight": 80
+			},
+			{
+				"set": 2,
+				"reps": 10,
+				"weight": 90
+			},
+			{
+				"set": 3,
+				"reps": 10,
+				"weight": 100
+			}
+		]
+	},
+	{
+		"exerciseName": "Bench Press",
+		"date": "2022-10-13",
+		"powerInfo": [
+			{
+				"set": 1,
+				"reps": 10,
+				"weight": 50
+			},
+			{
+				"set": 2,
+				"reps": 10,
+				"weight": 75
+			},
+			{
+				"set": 3,
+				"reps": 10,
+				"weight": 100
+			}
+		]
+	},
+	{
+		"exerciseName": "Chest Fly",
+		"date": "2022-10-14",
+		"powerInfo": [
+			{
+				"set": 1,
+				"reps": 5,
+				"weight": 50
+			},
+			{
+				"set": 2,
+				"reps": 7,
+				"weight": 70
+			},
+			{
+				"set": 3,
+				"reps": 9,
+				"weight": 90
+			}
+		]
+	},
+	{
+		"exerciseName": "Chest Press",
+		"date": "2022-10-15",
+		"powerInfo": [
+			{
+				"set": 1,
+				"reps": 10,
+				"weight": 35
+			},
+			{
+				"set": 2,
+				"reps": 10,
+				"weight": 45
+			},
+			{
+				"set": 3,
+				"reps": 10,
+				"weight": 55
+			}
+		]
+	},
+	{
+		"exerciseName": "Calf Raise",
+		"date": "2022-10-16",
+		"powerInfo": [
+			{
+				"set": 1,
+				"reps": 10,
+				"weight": 50
+			},
+			{
+				"set": 2,
+				"reps": 10,
+				"weight": 70
+			},
+			{
+				"set": 3,
+				"reps": 10,
+				"weight": 90
+			}
+		]
+	}
+]
