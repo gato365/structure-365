@@ -6,17 +6,17 @@
 			{
 				"set": 1,
 				"reps": 10,
-				"weight": 50
+				"weight": 80
 			},
 			{
 				"set": 2,
 				"reps": 10,
-				"weight": 70
+				"weight": 90
 			},
 			{
 				"set": 3,
 				"reps": 10,
-				"weight": 90
+				"weight": 100
 			}
 		]
 	},
@@ -32,12 +32,12 @@
 			{
 				"set": 2,
 				"reps": 10,
-				"weight": 70
+				"weight": 75
 			},
 			{
 				"set": 3,
 				"reps": 10,
-				"weight": 90
+				"weight": 100
 			}
 		]
 	},
@@ -47,17 +47,17 @@
 		"powerInfo": [
 			{
 				"set": 1,
-				"reps": 10,
+				"reps": 5,
 				"weight": 50
 			},
 			{
 				"set": 2,
-				"reps": 10,
+				"reps": 7,
 				"weight": 70
 			},
 			{
 				"set": 3,
-				"reps": 10,
+				"reps": 9,
 				"weight": 90
 			}
 		]
@@ -69,17 +69,17 @@
 			{
 				"set": 1,
 				"reps": 10,
-				"weight": 50
+				"weight": 35
 			},
 			{
 				"set": 2,
 				"reps": 10,
-				"weight": 70
+				"weight": 45
 			},
 			{
 				"set": 3,
 				"reps": 10,
-				"weight": 90
+				"weight": 55
 			}
 		]
 	},

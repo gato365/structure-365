@@ -15,12 +15,21 @@ const seedDatabase = async () => {
   // for (const exercise of exerciseData) { 
   for (let i = 0; i < 15; i++) {
 
+
+    // Gather an exercise
     const exercise = exerciseData[Math.floor(Math.random() * exerciseData.length)]
+    
 
+    console.log(typeof exercise.powerInfo);
+    //Temporily Store 
+    const tmpExercise = { ...exercise }
 
-    exercise.powerInfo = JSON.stringify(exercise.powerInfo)
+    tmpExercise.powerInfo = JSON.stringify(tmpExercise.powerInfo)
+    
+    
+    
     await Exercise.create({
-      ...exercise,
+      ...tmpExercise,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }

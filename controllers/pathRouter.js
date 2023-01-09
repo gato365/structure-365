@@ -42,18 +42,25 @@ pathRouter.get('/', async (req, res) => {
 
 
 
-        // const newExerciseData = exerciseData.get({ plain: true })
-
-        //  ~~~~~~~~~~~~~~~~~~~  Calculation of Power BLOCK ~~~~~~~~~~~~~~~~~~~~~~//
-      const powerData = newExerciseData.map(({ powerInfo }) => 
-        powerInfo 
+      const powerData = newExerciseData.map(({ date,powerInfo }) => 
+        [date,powerInfo]
         );
-        console.log(powerData);
+       
+
+
+        const dateT = [];
+        const powerT = [];
 
         for (let i = 0; i < powerData.length; i++) {
-             const m = addPowerSets(powerData[i]);
-             console.log(m);
+            const infoDatePower = powerData[i];
+             dateT.push(infoDatePower[0]);
+             
+        
+             const calPower = addPowerSets(infoDatePower[1]);
+             powerT.push(calPower);
+            
         }
+
 
     //   const plainPowerData = powerData.get({ plain: true });
     //   const calcultedPower = addPowerSets(powerData.powerInfo);
@@ -62,7 +69,7 @@ pathRouter.get('/', async (req, res) => {
       
       //  ~~~~~~~~~~~~~~~~~~~  Calculation of Power BLOCK ~~~~~~~~~~~~~~~~~~~~~~//
       // console.log(exerciseData)
-  
+   
     // }   catch (err) {
 
     //     console.log(req.params);
@@ -72,11 +79,12 @@ pathRouter.get('/', async (req, res) => {
 
         // ~~~~~~~~~~~~~~~~~~ 
 
-    
+     
 
         res.render('home', {
 
-            // ~~~~~~~~~~~~~~~~~~ TEST ~~~~~~~~~~~~~~~~~~~//
+            xDate: dateT,
+            yPower: powerT,
             chartData: [
                 { x: 50, y: 7 },
                 { x: 60, y: 8 },
@@ -91,7 +99,7 @@ pathRouter.get('/', async (req, res) => {
                 { x: 150, y: 15 }
 
             ]
-            // ~~~~~~~~~~~~~~~~~~ TEST ~~~~~~~~~~~~~~~~~~~//
+
 
 
 

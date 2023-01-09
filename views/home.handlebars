@@ -1,36 +1,55 @@
 {{!-- <section class="hero has-background-grey is-fullheight"> --}}
-    This is the homepage
-<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-{{!-- </section> --}}
+  This is the homepage
+  <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+  {{!--
+</section> --}}
 
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 <script>
-const xyValues = {{{ jsonHelper chartData }}};
+  Array.prototype.max = function() {
+  return Math.max.apply(null, this);
+};
+
+Array.prototype.min = function() {
+  return Math.min.apply(null, this);
+};
+  const xyValues = {{{ jsonHelper chartData }}};
+
+    const xDate = {{{ jsonHelper xDate }}};
+    const yPower = {{{ jsonHelper yPower }}};
 
 
+console.log(xDate);
+console.log(yPower);
 
-new Chart("myChart", {
-  type: "scatter",
-  data: {
-    datasets: [{
-      pointRadius: 4,
-      pointBackgroundColor: "rgb(0,0,255)",
-      data: xyValues
-    }]
-  },
-  options: {
-    legend: {display: false},
-    scales: {
-      xAxes: [{ticks: {min: 40, max:160}}],
-      yAxes: [{ticks: {min: 6, max:16}}],
+
+  new Chart("myChart", {
+    type: "line",
+    data: {
+      labels: xDate,
+      datasets: [{
+        label: 'Line Chart',
+        data: yPower,
+        backgroundColor: 'rgba(0, 0, 0, 0)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      legend: { display: false },
+      scales: {
+        xAxes: [{ ticks: { min: 40, max: 160 } }],
+        yAxes: [{ ticks: { min: yPower.min()-100, max: yPower.max()+100 } }],
+      }
     }
-  }
-});
+  });
+
+
+
+
+
 
 </script>
-
-
-
