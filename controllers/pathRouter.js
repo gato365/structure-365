@@ -5,9 +5,6 @@ const auth = require('../middleware/auth');
 
 const pathRouter = new Router();
 
-
-
-
 function addPowerSets(tmpPowerJSON) {
 
     // Find Length of JSON
@@ -20,7 +17,6 @@ function addPowerSets(tmpPowerJSON) {
         let setPower = tmpPowerJSON[i].reps * tmpPowerJSON[i].weight;
         calculatedPower.push(setPower);
     }
-
  
     // Find the sum of Power for set
     let sumPower = 0;
@@ -28,45 +24,40 @@ function addPowerSets(tmpPowerJSON) {
         sumPower += calculatedPower[i];
     }
 
-
     return sumPower;
 }
-
-
 
 pathRouter.get('/', auth, async (req, res) => {
 
     const plainUser = req.user.get({plain: true});
         // Is this where I do the following
-        const newExerciseData = await Exercise.findAll() // Fileter based on user
+    const newExerciseData = await Exercise.findAll() // Fileter based on user
 
-
-
-      const powerData = newExerciseData.map(({ date,powerInfo }) => 
+    const powerData = newExerciseData.map(({ date,powerInfo }) => 
         [date,powerInfo]
-        );
+    );
        
 
 
-        const dateT = [];
-        const powerT = [];
+    const dateT = [];
+    const powerT = [];
 
-        for (let i = 0; i < powerData.length; i++) {
-            const infoDatePower = powerData[i];
-             dateT.push(infoDatePower[0]);
-             
-        
-             const calPower = addPowerSets(infoDatePower[1]);
-             powerT.push(calPower);
+    for (let i = 0; i < powerData.length; i++) {
+        const infoDatePower = powerData[i];
+            dateT.push(infoDatePower[0]);
             
-        }
+    
+            const calPower = addPowerSets(infoDatePower[1]);
+            powerT.push(calPower);
+        
+    }
 
-       res.render('home', {
-            user: plainUser,
-            xDate: dateT,
-            yPower: powerT,
-   
-        });
+    res.render('home', {
+        user: plainUser,
+        xDate: dateT,
+        yPower: powerT,
+
+    });
 });
 
 pathRouter.get('/landing', (req, res) => {
