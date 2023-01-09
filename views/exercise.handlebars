@@ -1,4 +1,4 @@
-<section class="has-background-grey-dark">
+<section id="exercise_section" class="has-background-grey-dark">
 	<div class="date_holder box has-background-grey-lighter"></div>
 	<div class="box has-background-grey-lighter">
 		<article>
@@ -10,13 +10,16 @@
 					<span style="font-weight:bolder; font-size:x-large">Exercise Name: </span> <input type="text">
 				</div>
 				<div class="message-body-content box">
-					<span style="font-weight:bolder; font-size:x-large">Set 1: </span> weight:  <input type="text"> reps:  <input type="text">
+					<span style="font-weight:bolder; font-size:x-large">Set 1: </span> weight: <input type="text"> reps:
+					<input type="text">
 				</div>
 				<div class="message-body-content box">
-					<span style="font-weight:bolder; font-size:x-large">Set 2: </span> weight:  <input type="text"> reps:  <input type="text">
+					<span style="font-weight:bolder; font-size:x-large">Set 2: </span> weight: <input type="text"> reps:
+					<input type="text">
 				</div>
 				<div class="message-body-content box">
-					<span style="font-weight:bolder; font-size:x-large">Set 3: </span> weight:  <input type="text"> reps:  <input type="text">
+					<span style="font-weight:bolder; font-size:x-large">Set 3: </span> weight: <input type="text"> reps:
+					<input type="text">
 				</div>
 			</div>
 		</article>
@@ -29,13 +32,16 @@
 					<span style="font-weight:bolder; font-size:x-large">Exercise Name: </span> <input type="text">
 				</div>
 				<div class="message-body-content box">
-					<span style="font-weight:bolder; font-size:x-large">Set 1:</span> weight:  <input type="text"> reps:  <input type="text">
+					<span style="font-weight:bolder; font-size:x-large">Set 1:</span> weight: <input type="text"> reps:
+					<input type="text">
 				</div>
 				<div class="message-body-content box">
-					<span style="font-weight:bolder; font-size:x-large">Set 2:</span> weight:  <input type="text"> reps:  <input type="text">
+					<span style="font-weight:bolder; font-size:x-large">Set 2:</span> weight: <input type="text"> reps:
+					<input type="text">
 				</div>
 				<div class="message-body-content box">
-					<span style="font-weight:bolder; font-size:x-large">Set 3:</span> weight:  <input type="text"> reps:  <input type="text">
+					<span style="font-weight:bolder; font-size:x-large">Set 3:</span> weight: <input type="text"> reps:
+					<input type="text">
 				</div>
 			</div>
 		</article>
@@ -45,16 +51,20 @@
 			</div>
 			<div class="message-body">
 				<div class="message-body-content box">
-					<span style="font-weight:bolder; font-size:x-large">Exercise Name: </span> <input type="text">
+					<span style="font-weight:bolder; font-size:x-large">Exercise Name: </span> <input type="text"
+						id="exercise_3_name">
 				</div>
 				<div class="message-body-content box">
-					<span style="font-weight:bolder; font-size:x-large">Set 1:</span> weight:  <input type="text"> reps:  <input type="text">
+					<span style="font-weight:bolder; font-size:x-large">Set 1:</span> weight: <input type="text"
+						id="set1_ex3_weight"> reps: <input type="text" id="set1_ex3_reps">
 				</div>
 				<div class="message-body-content box">
-					<span style="font-weight:bolder; font-size:x-large">Set 2:</span> weight:  <input type="text"> reps:  <input type="text">
+					<span style="font-weight:bolder; font-size:x-large">Set 2:</span> weight: <input type="text"
+						id="set2_ex3_weight"> reps: <input type="text" id="set2_ex3_reps">
 				</div>
 				<div class="message-body-content box">
-					<span style="font-weight:bolder; font-size:x-large">Set 3:</span> weight:  <input type="text"> reps:  <input type="text">
+					<span style="font-weight:bolder; font-size:x-large">Set 3:</span> weight: <input type="text"
+						id="set3_ex3_weight"> reps: <input type="text" id="set3_ex3_reps">
 				</div>
 			</div>
 		</article>
@@ -68,22 +78,81 @@
 
 
 <script>
-    let time = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"2-digit"});
-    document.querySelector('.date_holder').textContent = time;
+	let time = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "2-digit" });
+	
+	document.querySelector('.date_holder').textContent = time;
 
 
-    let acc = document.getElementsByClassName("accordion");
-    let i;
+	let acc = document.getElementsByClassName("accordion");
+	let i;
 
-    for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-        /* Toggle between hiding and showing the active panel */
-        let panel = this.nextElementSibling;
-        if (panel.style.display === "none") {
-        panel.style.display = "block";
-        } else {
-        panel.style.display = "none";
-        }
-    });
-    }
+	for (i = 0; i < acc.length; i++) {
+		acc[i].addEventListener("click", function () {
+			/* Toggle between hiding and showing the active panel */
+			let panel = this.nextElementSibling;
+			if (panel.style.display === "none") {
+				panel.style.display = "block";
+			} else {
+				panel.style.display = "none";
+			}
+		});
+	}
+
+console.log(time);
+
+	// Dev Get Exercise
+
+	document.querySelector("#submit_button").addEventListener("click", (event) => {
+		event.preventDefault();
+
+
+
+		const ex3Name = document.getElementById("exercise_3_name").value;
+		const ex3Set1Weight = parseInt(document.getElementById("set1_ex3_weight").value);
+		const ex3Set2Weight = parseInt(document.getElementById("set2_ex3_weight").value);
+		const ex3Set3Weight = parseInt(document.getElementById("set3_ex3_weight").value);
+		const ex3Set1Reps = parseInt(document.getElementById("set1_ex3_reps").value);
+		const ex3Set2Reps = parseInt(document.getElementById("set2_ex3_reps").value);
+		const ex3Set3Reps = parseInt(document.getElementById("set3_ex3_reps").value);
+
+
+		const powerInfo3 = [{
+			"set": 1,
+			"reps": ex3Set1Reps,
+			"weight": ex3Set1Weight
+		},
+		{
+			"set": 2,
+			"reps": ex3Set2Reps,
+			"weight": ex3Set2Weight
+		},
+		{
+			"set": 3,
+			"reps": ex3Set3Reps,
+			"weight": ex3Set3Weight
+		}]
+
+
+		console.log(powerInfo3);
+
+		fetch('/api/exercise', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				ex3Name,
+				time,
+				powerInfo3,
+			}),
+		}).then((result) => {
+			if (!result.ok) {
+				document.getElementById("exercise_section").textContent = "Could not enter exercise";
+			} else {
+				window.location.reload();
+			}
+		});
+	});
+
+
 </script>

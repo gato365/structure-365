@@ -60,13 +60,13 @@
 				"reps": 9,
 				"weight": 90
 			}
-		]
+		] 
 	},
 	{
 		"exerciseName": "Chest Press",
 		"date": "2022-10-15",
 		"powerInfo": [
-			{
+			{ 
 				"set": 1,
 				"reps": 10,
 				"weight": 35
@@ -79,7 +79,7 @@
 			{
 				"set": 3,
 				"reps": 10,
-				"weight": 55
+				"weight": 55 
 			}
 		]
 	},
