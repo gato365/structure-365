@@ -1,18 +1,30 @@
-<section class="has-background-grey is-fullheight" style="height:100vh">
-  <div class="date_holder"></div>
-
-
-  welcome {{user.username}}<br>
-
-  This is the homepage <br>
-  <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-
-  <button id="get_exercise" class="button is-normal is-responsive is-primary level-right">
-    Exercise
-  </button>
-  
-</section>
-
+<div class="tile is-ancestor has-background-grey-dark hero_height">
+  <div class="tile is-vertical is-5">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification ">
+          <p class="title">Welcome Back {{user.username}}</p>
+        </article>
+        <article class="tile is-child notification ">
+          <p class="title date_holder"></p>
+          <p class="subtitle time_holder"></p>
+        </article>
+        <article class="tile is-child notification ">
+          <button id="get_exercise" class="button is-normal is-responsive is-primary level-right">
+              Exercise
+          </button>
+        </article>
+      </div>
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-success">
+      <div class="content">
+        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+      </div>
+    </article>
+  </div>
+</div>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -29,10 +41,14 @@
   const xDate = {{{ jsonHelper xDate }}};
   const yPower = {{{ jsonHelper yPower }}};
 
+<<<<<<< HEAD
 
   {{!-- console.log(xDate); --}}
   {{!-- console.log(yPower); --}}
-
+=======
+  console.log(xDate);
+  console.log(yPower);
+>>>>>>> 0b47967149f8b16275bc688c654f1fdeea641602
 
   new Chart("myChart", {
     type: "line",
@@ -55,17 +71,14 @@
     }
   });
 
-
-
-
-
-
-      let time = new Date().toLocaleDateString('en-us', {weekday:"long", year:"numeric", month:"short", day:"2-digit"});
-      document.querySelector('.date_holder').textContent = time;
+  let date = new Date().toLocaleDateString('en-us', {weekday:"long", year:"numeric", month:"short", day:"2-digit"});
+  let time = new Date().toLocaleTimeString();
+  document.querySelector('.date_holder').textContent = date;
+  document.querySelector('.time_holder').textContent = time;
 
   document.querySelector('#get_exercise').addEventListener('click', (event) => {
-        event.preventDefault();
-      window.location.replace('/exercise');
-   });
+    event.preventDefault();
+    window.location.replace('/exercise');
+  });
 
 </script>

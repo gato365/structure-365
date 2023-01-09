@@ -56,6 +56,7 @@ pathRouter.get('/', auth, async (req, res) => {
     }
 
     res.render('home', {
+        style: 'home.css',
         user: plainUser,
         xDate: dateT,
         yPower: powerT,
