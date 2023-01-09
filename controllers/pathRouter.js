@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-
+const { Router } = require ("express");
 const User = require('../models/User');
 const auth = require('../middleware/auth');
 
@@ -21,7 +21,7 @@ function addPowerSets(tmpPowerJSON) {
         calculatedPower.push(setPower);
     }
 
-
+ 
     // Find the sum of Power for set
     let sumPower = 0;
     for (let i = 0; i < numberSets; i++) {

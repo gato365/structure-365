@@ -51,7 +51,7 @@
     let email = document.querySelector('#email_signup').value;
     let password = document.querySelector('#password_signup').value;
     let passwordCheck = document.querySelector('#password_signup_check').value;
-    
+
 
     document.querySelector('#signup_errors').textContent = '';
     if (password != passwordCheck) {
@@ -69,6 +69,7 @@
         password,
       }),
     }).then((result) => {
+      console.log(result);
       if (!result.ok) {
         document.querySelector('#signup_errors').textContent = 'Invalid Username, Email, or Password';
       } else {
