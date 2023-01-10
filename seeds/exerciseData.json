@@ -39,7 +39,7 @@
 				"reps": 10,
 				"weight": 100
 			}
-		]
+		]      
 	},
 	{
 		"exerciseName": "Chest Fly",
@@ -62,9 +62,9 @@
 			}
 		] 
 	},
-	{
+	{  
 		"exerciseName": "Chest Press",
-		"date": "2022-10-15",
+		"date": "2022-10-15", 
 		"powerInfo": [
 			{ 
 				"set": 1,

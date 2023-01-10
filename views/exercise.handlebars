@@ -107,7 +107,7 @@ console.log(time);
 
 
 
-		const ex3Name = document.getElementById("exercise_3_name").value;
+		const exerciseName = document.getElementById("exercise_3_name").value;
 		const ex3Set1Weight = parseInt(document.getElementById("set1_ex3_weight").value);
 		const ex3Set2Weight = parseInt(document.getElementById("set2_ex3_weight").value);
 		const ex3Set3Weight = parseInt(document.getElementById("set3_ex3_weight").value);
@@ -116,7 +116,7 @@ console.log(time);
 		const ex3Set3Reps = parseInt(document.getElementById("set3_ex3_reps").value);
 
 
-		const powerInfo3 = [{
+		const powerInfo = [{
 			"set": 1,
 			"reps": ex3Set1Reps,
 			"weight": ex3Set1Weight
@@ -132,8 +132,8 @@ console.log(time);
 			"weight": ex3Set3Weight
 		}]
 
-
-		console.log(powerInfo3);
+		const date = time;
+		{{!-- const user_id = {{ user.id }}; --}}
 
 		fetch('/api/exercise', {
 			method: 'POST',
@@ -141,9 +141,10 @@ console.log(time);
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				ex3Name,
-				time,
-				powerInfo3,
+				exerciseName,
+				date,
+				powerInfo,
+				user_id
 			}),
 		}).then((result) => {
 			if (!result.ok) {
