@@ -46,8 +46,6 @@ usersRouter.post("/signup", async (req, res) => {
 
 //clear the user's cookie for logout
 usersRouter.post("/logout", async (req, res) => {
-  console.log('clear was called');
-
   res.clearCookie('logintoken');
   res.end();
 });

@@ -98,23 +98,19 @@
 		});
 	}
 
-console.log(time);
-
 	// Dev Get Exercise
-
 	document.querySelector("#submit_button").addEventListener("click", (event) => {
-		event.preventDefault();
+		const ex3Name = document.querySelector("#exercise_3_name").textContent;
+		const ex3Set1Weight = document.querySelector("#set1_ex3_weight").value;
+		const ex3Set2Weight = document.querySelector("#set2_ex3_weight").value;
+		const ex3Set3Weight = document.querySelector("#set3_ex3_weight").value;
+		const ex3Set1Reps = document.querySelector("#set1_ex3_reps").value;
+		const ex3Set2Reps = document.querySelector("#set2_ex3_reps").value;
+		const ex3Set3Reps = document.querySelector("#set3_ex3_reps").value;
+	
 
-
-
-		const ex3Name = document.getElementById("exercise_3_name").value;
-		const ex3Set1Weight = parseInt(document.getElementById("set1_ex3_weight").value);
-		const ex3Set2Weight = parseInt(document.getElementById("set2_ex3_weight").value);
-		const ex3Set3Weight = parseInt(document.getElementById("set3_ex3_weight").value);
-		const ex3Set1Reps = parseInt(document.getElementById("set1_ex3_reps").value);
-		const ex3Set2Reps = parseInt(document.getElementById("set2_ex3_reps").value);
-		const ex3Set3Reps = parseInt(document.getElementById("set3_ex3_reps").value);
-
+		
+		console.log(ex3Name,ex3Set1Weight, ex3Set2Weight,ex3Set1Reps, ex3Set2Reps);
 
 		const powerInfo3 = [{
 			"set": 1,
@@ -141,18 +137,27 @@ console.log(time);
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				ex3Name,
-				time,
-				powerInfo3,
+				exerciseName: ex3Name,
+				date: time,
+				powerInfo: powerInfo3,
 			}),
 		}).then((result) => {
 			if (!result.ok) {
 				document.getElementById("exercise_section").textContent = "Could not enter exercise";
 			} else {
-				window.location.reload();
+				window.location.replace('/');
 			}
 		});
 	});
 
 
 </script>
+
+{{!-- 
+const ex3Name = document.getElementById("exercise_3_name").value;
+		const ex3Set1Weight = parseInt(document.getElementById("set1_ex3_weight").value);
+		const ex3Set2Weight = parseInt(document.getElementById("set2_ex3_weight").value);
+		const ex3Set3Weight = parseInt(document.getElementById("set3_ex3_weight").value);
+		const ex3Set1Reps = parseInt(document.getElementById("set1_ex3_reps").value);
+		const ex3Set2Reps = parseInt(document.getElementById("set2_ex3_reps").value);
+		const ex3Set3Reps = parseInt(document.getElementById("set3_ex3_reps").value); --}}

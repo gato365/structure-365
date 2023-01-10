@@ -15,7 +15,7 @@ const exerciseRouter = new Router();
 
 
 
-exerciseRouter.post('/', auth, async (req, res) => {
+exerciseRouter.post('/', async (req, res) => {
   const { exerciseName, date, powerInfo } = req.body;
 
   
