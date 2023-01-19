@@ -88,9 +88,6 @@ pathRouter.get('/exercise', (req, res) => {
     });
 })
 
-
-
-
 pathRouter.get("/exercise/:id", auth, async (req, res) => {
     const { id } = req.params;
     
